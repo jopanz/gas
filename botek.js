@@ -1,13 +1,12 @@
 console.clear();
-const chalk = require('chalk');
-
-const inquirer = require ( 'inquirer')
-const EasyTable  = require ('easy-table')
+import chalk from 'chalk';
+import inquirer from 'inquirer';
+import EasyTable  from 'easy-table';
 
  var 
  bearer="",
-coin = "USDT",
-base = 0.000001,
+coin = "XEC",
+base = 1,
 
 nextbet = base,
 chance = 1,
@@ -94,6 +93,33 @@ afterLossesChance = 0,
 balanceB = 0;
 
 const log = console.log;
+const dox = () => {
+  console.log(
+    chalk.hex('#59a9c1')(`
+    
+                           █████████████▀██████████████████████
+                           █▄─▀█▄─▄█─▄▄▄▄█─▄▄─█▄─▄▄─█▄─▄█─▄─▄─█
+                           ██─█▄▀─██─██▄─█─██─██─▄▄▄██─████─███
+                           ▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▄▄▄▀▀▀▄▄▄▀▀▄▄▄▀▀
+ `),
+  );
+}
+dox();
+
+const banner = () => {
+  console.log(
+    chalk.hex('#FFA500')(`
+                               █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
+                               █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█
+                               █░░║║║╠─║─║─║║║║║╠─░░█
+                               █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█
+                               █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
+                                    ${chalk.greenBright('Ngopitbot versi 1.0')}
+ `),
+  );
+}
+banner();
+
 
   function job() {
   inquirer
@@ -125,10 +151,10 @@ function muncul(bearer) {
 
   optionsData.forEach((details, index) => {
     table.cell(
-      ('No'),
-      (index < 5 ? `${index + 1}` : index + 1)
+      chalk.whiteBright('No'),
+      chalk.cyan(index < 5 ? `${index + 1}` : index + 1)
     );
-    table.cell('Name'), details[0]);
+    table.cell(chalk.whiteBright('Name'), details[0]);
 
     table.newRow();
   });
@@ -152,7 +178,8 @@ function muncul(bearer) {
       upx();
     } else {
       console.log(`Option not recognized: ${option}`);
-      console.log('\nThank You for using Ngopitbot')
+      console.log(
+        chalk.hex('#FFA500')('\nThank You for using Ngopitbot')
       );
     }
   });
@@ -244,8 +271,8 @@ if (Number(currentprofit) >= 0) {
   }
   nextbet = basebet;
     
- console.log`${bethigh ? 'H' : 'L'}`) + "  " +
-            ` ${Number(ammount).toFixed(8)}`) + "  " +
+ console.log(chalk.green(`${bethigh ? 'H' : 'L'}`) + "  " +
+         chalk.green (               ` ${Number(ammount).toFixed(8)}`) + "  " +
             `${(Number(response.result.roll).toFixed(2)).toString().padStart(5, '0')}` + "  " +
                         `${(Number(response.result.result).toFixed(2)).toString().padStart(5, '0')}` + "  " +
                     ` ${ Number(currentprofit).toFixed(8) >= 0 ? chalk.green('+'+Number(currentprofit).toFixed(8)):chalk.red(Number(currentprofit).toFixed(8))}` + "  " +
