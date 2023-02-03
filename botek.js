@@ -1,12 +1,13 @@
 console.clear();
-import chalk from 'chalk';
-import inquirer from 'inquirer';
-import EasyTable  from 'easy-table';
+const chalk = require('chalk');
+
+const inquirer = require 'inquirer';
+const EasyTable  = require 'easy-table';
 
  var 
  bearer="",
 coin = "USDT",
-base = 1,
+base = 0.000001,
 
 nextbet = base,
 chance = 1,
@@ -706,8 +707,5 @@ function stop() {
 job();
 
 
-
-
   
-
  
