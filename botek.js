@@ -484,7 +484,7 @@ fetch("https://luckydiamond.io/api/chat/send-message", {
 let waitBet;
 
 function start() {
-	countTime() 
+	 
   waitBet = setInterval(function() {
     dobet();
   }, 1000);
