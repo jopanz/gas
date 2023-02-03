@@ -125,10 +125,10 @@ function muncul(bearer) {
 
   optionsData.forEach((details, index) => {
     table.cell(
-      chalk.whiteBright('No'),
-      chalk.cyan(index < 5 ? `${index + 1}` : index + 1)
+      ('No'),
+      (index < 5 ? `${index + 1}` : index + 1)
     );
-    table.cell(chalk.whiteBright('Name'), details[0]);
+    table.cell('Name'), details[0]);
 
     table.newRow();
   });
@@ -152,8 +152,7 @@ function muncul(bearer) {
       upx();
     } else {
       console.log(`Option not recognized: ${option}`);
-      console.log(
-        chalk.hex('#FFA500')('\nThank You for using Ngopitbot')
+      console.log('\nThank You for using Ngopitbot')
       );
     }
   });
@@ -245,8 +244,8 @@ if (Number(currentprofit) >= 0) {
   }
   nextbet = basebet;
     
- console.log(chalk.green(`${bethigh ? 'H' : 'L'}`) + "  " +
-         chalk.green (               ` ${Number(ammount).toFixed(8)}`) + "  " +
+ console.log`${bethigh ? 'H' : 'L'}`) + "  " +
+            ` ${Number(ammount).toFixed(8)}`) + "  " +
             `${(Number(response.result.roll).toFixed(2)).toString().padStart(5, '0')}` + "  " +
                         `${(Number(response.result.result).toFixed(2)).toString().padStart(5, '0')}` + "  " +
                     ` ${ Number(currentprofit).toFixed(8) >= 0 ? chalk.green('+'+Number(currentprofit).toFixed(8)):chalk.red(Number(currentprofit).toFixed(8))}` + "  " +
