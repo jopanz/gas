@@ -1,3 +1,4 @@
+import fetch from "node-fetch";
 var 
  bearer="0f1cba4a9e2cbdee7e94e9d36d48e833fdf31b152733e6c69aa727a8dd943c85",
 coin = "USDT",
