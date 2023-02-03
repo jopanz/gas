@@ -1,8 +1,8 @@
 console.clear();
 const chalk = require('chalk');
 
-const inquirer = require 'inquirer';
-const EasyTable  = require 'easy-table';
+const inquirer = require ( 'inquirer')
+const EasyTable  = require ('easy-table')
 
  var 
  bearer="",
@@ -707,5 +707,10 @@ function stop() {
 job();
 
 
+
+
   
- 
+
+  
+  
+  
