@@ -122,70 +122,7 @@ const banner = () => {
 banner();
 
 
-  function job() {
-  inquirer
-    .prompt([
-      {
-        type: 'input',
-        name: 'exampleVariable',
-        message: 'Enter a value for exampleVariable:'
-      }
-    ])
-    .then(answers => {
-      const { exampleVariable } = answers;
-      bearer='Bearer '+exampleVariable;
-      
-      
-      console.log(`exampleVariable is set to: ${bearer}`);
-      muncul();
-    });
-}
-
-function muncul(bearer) {
-  const table = new EasyTable();
-  const optionsData = [    ['Start'],
-    ['Klaim'],
-    ['Resetseed'],
-    ['Uptime'],
-    ['Recon']
-  ];
-
-  optionsData.forEach((details, index) => {
-    table.cell(
-      chalk.whiteBright('No'),
-      chalk.cyan(index < 5 ? `${index + 1}` : index + 1)
-    );
-    table.cell(chalk.whiteBright('Name'), details[0]);
-
-    table.newRow();
-  });
-
-  table.newRow();
-  console.log(table.toString());
-
-  const questions = [    {      type: 'input',      name: 'option',      message: 'Enter an option (e.x. 1):'    }  ];
-
-  inquirer.prompt(questions).then(answers => {
-    const option = answers.option;
-
-    if (option === '1') {
-      start();
-    } else if (option === '2') {
-      klaim();
-      process.exit();
-    } else if (option === '3') {
-      resetseed();
-    } else if (option === '4') {
-      upx();
-    } else {
-      console.log(`Option not recognized: ${option}`);
-      console.log(
-        chalk.hex('#FFA500')('\nThank You for using Ngopitbot')
-      );
-    }
-  });
-}
-
+  
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -704,7 +641,7 @@ function stop() {
 }
 //klaim();
 
-job();
+
 
 
 
