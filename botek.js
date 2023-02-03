@@ -1,7 +1,8 @@
 console.clear();
 import chalk from 'chalk';
 import inquirer from 'inquirer';
-import EasyTable  from 'easy-table';
+import EasyTable from 'easy-table';
+
 
  var 
  bearer="",
