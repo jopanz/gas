@@ -1,12 +1,6 @@
-console.clear();
-const chalk = require("chalk");
-const inquirer = require("inquirer");
-const EasyTable = require("easy-table");
-
-
- var 
- bearer="",
-coin = "XEC",
+var 
+ bearer="0f1cba4a9e2cbdee7e94e9d36d48e833fdf31b152733e6c69aa727a8dd943c85",
+coin = "USDT",
 base = 1,
 
 nextbet = base,
@@ -93,36 +87,8 @@ afterLossesBet = 0,
 afterLossesChance = 0,
 balanceB = 0;
 
-const log = console.log;
-const dox = () => {
-  console.log(
-    chalk.hex('#59a9c1')(`
-    
-                           █████████████▀██████████████████████
-                           █▄─▀█▄─▄█─▄▄▄▄█─▄▄─█▄─▄▄─█▄─▄█─▄─▄─█
-                           ██─█▄▀─██─██▄─█─██─██─▄▄▄██─████─███
-                           ▀▄▄▄▀▀▄▄▀▄▄▄▄▄▀▄▄▄▄▀▄▄▄▀▀▀▄▄▄▀▀▄▄▄▀▀
- `),
-  );
-}
-dox();
-
-const banner = () => {
-  console.log(
-    chalk.hex('#FFA500')(`
-                               █▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀▀█
-                               █░░╦─╦╔╗╦─╔╗╔╗╔╦╗╔╗░░█
-                               █░░║║║╠─║─║─║║║║║╠─░░█
-                               █░░╚╩╝╚╝╚╝╚╝╚╝╩─╩╚╝░░█
-                               █▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄▄█
-                                    ${chalk.greenBright('Ngopitbot versi 1.0')}
- `),
-  );
-}
-banner();
 
 
-  
 function getRndInteger(min, max) {
     return Math.floor(Math.random() * (max - min + 1)) + min;
 }
@@ -209,15 +175,8 @@ if (Number(currentprofit) >= 0) {
   }
   nextbet = basebet;
     
- console.log(chalk.green(`${bethigh ? 'H' : 'L'}`) + "  " +
-         chalk.green (               ` ${Number(ammount).toFixed(8)}`) + "  " +
-            `${(Number(response.result.roll).toFixed(2)).toString().padStart(5, '0')}` + "  " +
-                        `${(Number(response.result.result).toFixed(2)).toString().padStart(5, '0')}` + "  " +
-                    ` ${ Number(currentprofit).toFixed(8) >= 0 ? chalk.green('+'+Number(currentprofit).toFixed(8)):chalk.red(Number(currentprofit).toFixed(8))}` + "  " +
-
-            `${Number(wagered).toFixed(8)}`
-
-);
+ log(bets, Number(response.result.amount).toFixed(8),`${bethigh ? 'H' : 'L'}${Number(response.result.roll).toFixed(2)}`, Number(response.result.result).toFixed(2),Number(saldo) .toFixed (8)+ response.result.currency, Number(profit).toFixed(8),Number(wagered).toFixed(8),rh,gaji);// prints
+  
       } else {
     win = false;
     
@@ -259,22 +218,14 @@ if (Number(currentprofit) >= 0) {
     nextbet = previousbet * 2.50;
   }
  
-  console.log(chalk.red(`${bethigh ? 'H' : 'L'}`) + "  " +
-                   chalk.red   (  ` ${Number(ammount).toFixed(8)}`) + "  " +
-            `${(Number(response.result.roll).toFixed(2)).toString().padStart(5, '0')}` + "  " +
-                        `${(Number(response.result.result).toFixed(2)).toString().padStart(5, '0')}` + "  " +
-                    ` ${ Number(currentprofit).toFixed(8) >= 0 ? chalk.green('+'+Number(currentprofit).toFixed(8)):chalk.red(Number(currentprofit).toFixed(8))}` + "  " +
-
-            `${Number(wagered).toFixed(8)}`
-
-);
+  log(bets, Number(response.result.amount).toFixed(8),`${bethigh ? 'H' : 'L'}${Number(response.result.roll).toFixed(2)}`, Number(response.result.result).toFixed(2),Number(saldo) .toFixed (8)+ response.result.currency, Number(profit).toFixed(8),Number(wagered).toFixed(8),rh,gaji);// prints
+  
+  
 
 
     
 }
 
-const str = ''+waktu+'  '+bets+' Roll'+'  Ball:'+Number(saldo) .toFixed (8)+' '+ response.result.currency+' P:'+(Number(profit) >= 0 ? chalk.green(hab):chalk.red(hab));
-process.stdout.write(chalk.yellow(str.padEnd(1) + '\x1b[0G'));
 
 
 if (Number(response.result.profit)> ko && Number(response.result.profit) >= 0){
@@ -339,8 +290,8 @@ fetch("https://luckydiamond.io/api/chat/send-message", {
 }
 
  
-  
-      
+
+
 function klaim(){
 
 fetch("https://luckydiamond.io/get-faucet-mod", {
@@ -364,9 +315,9 @@ method: "POST"
 })
 .then(response => response.json())
 .then(data => {
-console.log(data.result,data.message);
-
-
+console.log(data);
+gaji=gaji+1;
+console.log('salary'+gaji);
 })
 .catch(error => {
 console.log(error);
@@ -412,57 +363,6 @@ fetch("https://luckydiamond.io/api/chat/send-message", {
 });}
 
 
-function upx(){
-	
-const headers = {
-    "accept": "*/*",
-    "accept-language": "en-US,en;q=0.9,id;q=0.8",
-        "x-csrf-token": "zb4UbkADbQ5SQssfgQMHvPZnUt3JslSmUgxn2xHX",
-"authorization": bearer,
-
-   "content-type": "application/json",
-    "sec-fetch-dest": "empty",
-    
-    "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-    "x-requested-with": "XMLHttpRequest",
-    "cookie": "mac=Mod; TawkConnectionTime=0; twk_uuid_6166719b157d100a41ac2224=%7B%22uuid%22%3A%221.JMYyGwUOT2UZqessqrbfqkeZinOnCc0X0skqOwPhjumfAMmh5Bc9gdp1kjERyvu8KF92UQYSmoI1fnsW9wbgH546WRagrWQ5XwHSmoPBySgIjBkbDzA6zeL6fOh6xeYSRtdqBZxa3WaaVSEIgm9H%22%2C%22version%22%3A3%2C%22domain%22%3A%22luckydiamond.io%22%2C%22ts%22%3A1674810969224%7D; XSRF-TOKEN=eyJpdiI6IldlQyt3aXNqVDNuNGVsb1JNMlovMHc9PSIsInZhbHVlIjoiUyt6Wmduejk2dXRFV21RZlVQUWl2QXFQc2dvL2pyNlJZY1hQVzhPZzBMcDZnOGZhTXNYK3B2amxqNExwMHljcStHSjZMcGN5RDlRZHp0eXFUajhkUjc3N3hWQUNaRXpPcHQ1T28vZFZKQ29EK1JyUFpMOFFiU1A1eFoyS25PQ2UiLCJtYWMiOiJiMzE2MzE2NmMwMjY1NGMxYTk0NzM3OTljZWFlY2U3YTc3ZTM1MWExYzVlOTgwOTc4YTE1MDRhY2JhZmM5ZmY1IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IndLdXBnNzcraHl2RFFnV2IzK2xDY2c9PSIsInZhbHVlIjoiTUJBaGJQMVdVaS8vblpFYnF3ZE9MOXNwaU94Z2R0V2o5WWQyQ1dRZlJuS2VsTnBUUi95RjFaN1NtdW9iTzhLbFJZbDVKYkNMM01kOWFVMlVKd1p6dVRjcG9GcTUyNzA3TExpTEpDL3J5TUpNc3VMZjQ4eHo1YmU2SDd6c2VCbWUiLCJtYWMiOiIxMGU2OGQwYmQzOWUzZTRmMmFiYjM2ZDI1Mzg1ZjY0ZjliMTc5ZjBhNmIxOGFhZGI2MzkyNzlmZTE3NDQ3ZWQ3IiwidGFnIjoiIn0%3D",
-
-    "Referer": "https://luckydiamond.io/dice",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
-};
-
-const data = {
-  mac: 'Mod'
-  
-};
-
-fetch("https://luckydiamond.io/up-time", {
-    method: 'POST',
-    headers: headers,
-    body: JSON.stringify(data)
-})
-.then(response => response.json())
-.then(data => {
-    console.log(data);
-})
-.catch(error => {
-    console.log(error);
-});}
-
-function countTime() {
-
-    setInterval(() => {
-    
-        playTime = (new Date().getTime()) - startTime;
-        playDays = Math.floor(playTime / (1e3 * 6e1 * 6e1 * 24));
-        playHours = Math.floor((playTime % (1e3 * 6e1 * 6e1 * 24)) / (1e3 * 6e1 * 6e1));
-        playMinutes = Math.floor((playTime % (1e3 * 6e1 * 6e1)) / (1e3 * 6e1));
-        playSeconds = Math.floor((playTime % (1e3 * 6e1)) / 1e3);
-        waktu=(`${playDays}:${playHours}:${playMinutes}:${playSeconds}`);
-    }, 1e3)
-    
-}
 
 
 
@@ -472,7 +372,7 @@ setInterval(function() {
     count_min = count_min + 1;
     console.log(count_min)
     
-    upx();
+
      if (count_min == 2) {
      	
 stop()
@@ -539,6 +439,8 @@ klaim();
 }, 60000);
 
 
+
+
 setInterval(function() {
     let now = new Date();
     let minutes = now.getMinutes(); // You can change getSeconds() to getMinutes()
@@ -579,7 +481,6 @@ fetch("https://luckydiamond.io/api/chat/send-message", {
     
 
 }, 60000)
-
 let waitBet;
 
 function start() {
@@ -589,65 +490,11 @@ function start() {
   }, 1000);
 }
 
-function randomString(length) {
-    var result           = '';
-    var characters       = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-    var charactersLength = characters.length;
-    for ( var i = 0; i < length; i++ ) {
-      result += characters.charAt(Math.floor(Math.random() * 
- charactersLength));
-   }
-   return result;
-}
-
-
-function resetseed() { 
-	fetch("https://luckydiamond.io/api/game-options/change-seeds", {
-  method: "POST",
-  headers: {
-    Authorization: `Bearer ${bearer}`,
-    "Content-Type": "application/json",
-        "sec-fetch-mode": "cors",
-    "sec-fetch-site": "same-origin",
-    "x-requested-with": "XMLHttpRequest",
-    "cookie": "mac=Mod; TawkConnectionTime=0; twk_uuid_6166719b157d100a41ac2224=%7B%22uuid%22%3A%221.JMYyGwUOT2UZqessqrbfqkeZinOnCc0X0skqOwPhjumfAMmh5Bc9gdp1kjERyvu8KF92UQYSmoI1fnsW9wbgH546WRagrWQ5XwHSmoPBySgIjBkbDzA6zeL6fOh6xeYSRtdqBZxa3WaaVSEIgm9H%22%2C%22version%22%3A3%2C%22domain%22%3A%22luckydiamond.io%22%2C%22ts%22%3A1674810969224%7D; XSRF-TOKEN=eyJpdiI6IldlQyt3aXNqVDNuNGVsb1JNMlovMHc9PSIsInZhbHVlIjoiUyt6Wmduejk2dXRFV21RZlVQUWl2QXFQc2dvL2pyNlJZY1hQVzhPZzBMcDZnOGZhTXNYK3B2amxqNExwMHljcStHSjZMcGN5RDlRZHp0eXFUajhkUjc3N3hWQUNaRXpPcHQ1T28vZFZKQ29EK1JyUFpMOFFiU1A1eFoyS25PQ2UiLCJtYWMiOiJiMzE2MzE2NmMwMjY1NGMxYTk0NzM3OTljZWFlY2U3YTc3ZTM1MWExYzVlOTgwOTc4YTE1MDRhY2JhZmM5ZmY1IiwidGFnIjoiIn0%3D; laravel_session=eyJpdiI6IndLdXBnNzcraHl2RFFnV2IzK2xDY2c9PSIsInZhbHVlIjoiTUJBaGJQMVdVaS8vblpFYnF3ZE9MOXNwaU94Z2R0V2o5WWQyQ1dRZlJuS2VsTnBUUi95RjFaN1NtdW9iTzhLbFJZbDVKYkNMM01kOWFVMlVKd1p6dVRjcG9GcTUyNzA3TExpTEpDL3J5TUpNc3VMZjQ4eHo1YmU2SDd6c2VCbWUiLCJtYWMiOiIxMGU2OGQwYmQzOWUzZTRmMmFiYjM2ZDI1Mzg1ZjY0ZjliMTc5ZjBhNmIxOGFhZGI2MzkyNzlmZTE3NDQ3ZWQ3IiwidGFnIjoiIn0%3D",
-
-    "Referer": "https://luckydiamond.io/dice",
-    "Referrer-Policy": "strict-origin-when-cross-origin"
-  },
-  body: JSON.stringify({ clientSeed: randomString(16) })
-})
-  .then(response => {
-    if (!response.ok) {
-      throw new Error("Network response was not ok");
-    }
-    return response.json();
-  })
-  .then(data => {
-console.log(data);
-  })
-  .catch(error => {
-    console.error("There was a problem with the fetch operation:", error);
-  });
-
-     
-}
-
-
-
 function stop() {
   clearInterval(waitBet);
   console.clear();
 }
 //klaim();
 
-
-
-
-
-
-  
-
-  
-  
-  
+start()
+klaim()
