@@ -300,7 +300,7 @@
           }
         })
         .catch(console.error);
-    }, 350);
+    }, 150);
   };
 
   document.getElementById("stop").onclick = () => {
